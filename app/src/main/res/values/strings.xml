@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Mayin</string>
+    <string name="how_to_play">Mayın Tarlası\'nda amacınız, mayınlara basmadan tüm boş kareleri açmaktır. Oyun ekranında bir dizi kapalı kare göreceksiniz. Bu karelerden bazılarının altında mayınlar gizlidir. Bir kareyi açmak için üzerine dokunmanız yeterli. Açılan karelerdeki sayılar, o karenin etrafındaki mayın sayısını gösterir. Mayın olduğundan şüphelendiğiniz karelere uzun basarak bayrak koyabilirsiniz. Bu bayraklar, mayınlara yanlışlıkla dokunmanızı engeller. Sayıları kullanarak mayınların yerini tahmin edin ve boş kareleri açmaya devam edin. Tüm boş kareleri açtığınızda oyunu kazanırsınız! Ancak, bir mayına basarsanız oyun biter. Unutmayın, sayılara dikkat edin ve mantık yürütün!</string>
+    <string name="title_activity_how_to_play">Nasıl oynanır?</string>
 </resources>

@@ -33,6 +33,16 @@ android {
 
 dependencies {
 
+    val room_version = "2.7.0"
+
+    implementation("androidx.room:room-runtime:$room_version")
+
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+
+
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)

@@ -1,4 +1,4 @@
-Aşağıda verilen kodları skor listesini çağırmak istediğiniz aktiviteye koyun.
+**Aşağıda verilen kodları skor listesini çağırmak istediğiniz aktiviteye koyunuz.**
 
 //Veritabanından verileri çekme işlemi
 
@@ -18,7 +18,7 @@ recyclerView.setAdapter(adapter);
 
 recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-Bundan sonra skor listesinin gösterilmesini istediğiniz layout'a recyclerview nesnesini koyunuz. Örnek olarak:
+**Bundan sonra skor listesinin gösterilmesini istediğiniz layout'a recyclerview nesnesini koyunuz. Örnek olarak:**
 
   <androidx.recyclerview.widget.RecyclerView
   
@@ -44,9 +44,9 @@ app:layout_constraintBottom_toBottomOf="parent"
 
 />
 
-recycler_view.xml dosyasını, listenin daha farklı gözükmesini isterseniz ona göre değiştirebilirsiniz. (örnek olarak cardView)
+**recycler_view.xml dosyasını, listenin daha farklı gözükmesini isterseniz ona göre değiştirebilirsiniz. (örnek olarak cardView)**
 
-Veritabanına verileri aşağıdaki şekilde ekleyebilirsiniz.
+**Veritabanına verileri aşağıdaki şekilde ekleyebilirsiniz.**
 
 private void databaseTest() {
   

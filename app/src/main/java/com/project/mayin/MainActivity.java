@@ -17,8 +17,6 @@ protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    databaseTest();// Veritabanı testi
-
     Button easyButton = findViewById(R.id.easyButton);
     Button mediumButton = findViewById(R.id.mediumButton);
     Button hardButton = findViewById(R.id.hardButton);
@@ -57,16 +55,5 @@ protected void onCreate(Bundle savedInstanceState) {
         Intent intent = new Intent(this, HowToPlayActivity.class);
         startActivity(intent);
     }
-    private void databaseTest() {
-        AppDatabase db = AppDatabase.getDatabase(this);// Veritabanı nesnesini oluşturur
-        ScoreDao scoreDao = db.scoreDao();// ScoreDao nesnesini oluşturur
 
-        Score score = new Score("Player2", "Kolay", 200);// Yeni bir skor nesnesi oluşturur
-        scoreDao.insertAll(score);// Veritabanına skor nesnesini ekler
-
-        TextView databaseTest = findViewById(R.id.databaseTest);
-
-        List<Score> scores = scoreDao.getAll();// Tüm skorları alır
-        databaseTest.setText(scores.toString());// Skorları TextView'e yazdırır
-    }
 }

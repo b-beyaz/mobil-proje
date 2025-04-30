@@ -22,13 +22,15 @@ public class HowToPlayActivity extends AppCompatActivity{
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        //Veritabanından verileri çekme işlemi
         AppDatabase db = AppDatabase.getDatabase(this);
         ScoreDao scoreDao = db.scoreDao();
         List<Score> scores = scoreDao.getAll();
-
+        //Verileri RecyclerView'a bağlama işlemi
         RecyclerView recyclerView = findViewById(R.id.mRecyclerView);
         Score_RecycleViewAdapter adapter = new Score_RecycleViewAdapter(this, scores);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
+
 }

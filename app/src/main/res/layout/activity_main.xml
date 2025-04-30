@@ -8,14 +8,14 @@
     tools:context=".MainActivity">
 
     <!-- Veritabanı test yazısı -->
-    <TextView
-        android:id="@+id/databaseTest"
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Boş"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:onClick="howToPlay"
+        android:text="Nasıl oynanır"
         app:layout_constraintTop_toTopOf="parent"
-        android:onClick="howToPlay"/>
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
 
 
     <!-- Hoş Geldiniz Yazısı -->

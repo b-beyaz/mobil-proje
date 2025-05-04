@@ -1,19 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp"
-    android:background="@color/white">
+    android:layout_height="match_parent">
 
-    <!-- Zorluk seviyesini gösteren TextView -->
-    <TextView
-        android:id="@+id/difficultyText"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textSize="24sp"
-    android:textStyle="bold"
-    android:layout_centerInParent="true"
-    android:textColor="@color/black"
-    android:text="Seçilen Zorluk: "/>
 
-</RelativeLayout>
+
+    <!-- 8x8 Dashboard (Oyun Tahtası) - Ekranın 3/4'ü -->
+
+    <GridLayout
+        android:id="@+id/gameBoard"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="3dp"
+        android:columnCount="8"
+        android:rowCount="8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.0">
+
+        <!-- Placeholder for grid cells -->
+        <!-- Add buttons or custom views for each cell in the grid as needed -->
+
+    </GridLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="409dp"
+        android:layout_height="150dp"
+        android:layout_marginEnd="2dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <!-- Toolbar Ekleme -->
+        <!-- Player Name Text -->
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:background="@color/toolbarRenk"
+            android:title="Game"
+            app:titleTextColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@id/gameBoard"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+        <!-- Score Display -->
+        <TextView
+            android:layout_margin="10dp"
+            android:id="@+id/playerNameTextView"
+            android:layout_width="278dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Oyuncu Adı: "
+            android:textStyle="bold"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/scoreTextView"
+            android:layout_width="278dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Mevcut Skor: "
+            android:textSize="20sp"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/highestScoreTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="En Yüksek Skor: 0 - Hiçbir oyuncu yok"
+            android:textSize="20sp" > </TextView>
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

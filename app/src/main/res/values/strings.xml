@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">Mayin</string>
+    <string name="app_name">Mine</string>
+    <string name="settings">Settings</string>
+    <string name="theme_switch">Night Theme</string>
+    <string name="language">Language</string>
+    <string name="turkish">Turkish</string>
+    <string name="english">English</string>
+
 </resources>

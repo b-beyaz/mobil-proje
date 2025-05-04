@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Gece modu renkleri -->
     <color name="background">#121212</color>        <!-- Ana arka plan (çok koyu gri) -->
     <color name="surface">#1E1E1E</color>            <!-- Kart/alt alanlar -->
     <color name="primary">#BB86FC</color>            <!-- Vurgulu buton/metin rengi -->
@@ -12,5 +13,4 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="dark_gray">#616161</color>
-    <color name="toolbarRenk">#233CA6</color>
 </resources>

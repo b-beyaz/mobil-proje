@@ -3,10 +3,26 @@
 
     <item
         android:id="@+id/item_x1"
-        android:title="Ayarlar" />
+        android:title="Ayarlar"
+        android:icon="@drawable/settings_icon"
+        android:iconTint="@color/black"
+        />
 
     <item
         android:id="@+id/item_x2"
-        android:title="Nasıl Oynanır" />
+        android:title="Skor Tablosu"
+        android:iconTint="@color/black"
+        android:icon="@drawable/skor"
+
+        />
+    <item
+        android:id="@+id/item_x3"
+        android:title="Nasıl Oynanır"
+        android:iconTint="@color/black"
+        android:icon="@drawable/howto_icon"
+
+        />
+
+
 
 </menu>

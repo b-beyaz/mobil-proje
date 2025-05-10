@@ -12,5 +12,9 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="dark_gray">#616161</color>
-    <color name="toolbarRenk">#233CA6</color>
+
+
+
+    <color name="toolbarRenk">#ADD8E6</color>
+    <color name="butonRenk">#4682B4</color>
 </resources>

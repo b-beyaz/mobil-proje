@@ -3,6 +3,8 @@ package com.project.mayin;
 
 //import static androidx.core.content.ContextCompat.getString;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -35,15 +37,14 @@ public class Score_RecycleViewAdapter extends RecyclerView.Adapter<Score_Recycle
         this.context = context;
         this.scores = scores;
     }
-
     @NonNull
     @Override
     public Score_RecycleViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.recycler_view, parent, false);
         return new Score_RecycleViewAdapter.ViewHolder(view);
-    }
 
+    }
     @Override
     public void onBindViewHolder(@NonNull Score_RecycleViewAdapter.ViewHolder holder, int position) {
 
@@ -55,22 +56,14 @@ public class Score_RecycleViewAdapter extends RecyclerView.Adapter<Score_Recycle
         holder.listDifficulty.setText(scores.get(position).difficulty);
         holder.listScore.setText(formattedScore);
     }
-
-
-
-
     @Override
     public int getItemCount() {
         return scores.size();
     }
-
     public static class ViewHolder extends RecyclerView.ViewHolder {
-
-
         TextView listScore;
         TextView listDifficulty;
         TextView listPlayerName;
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -78,6 +71,6 @@ public class Score_RecycleViewAdapter extends RecyclerView.Adapter<Score_Recycle
             listDifficulty = itemView.findViewById(R.id.listDifficulty);
             listPlayerName = itemView.findViewById(R.id.listPlayerName);
         }
-
     }
+
 }

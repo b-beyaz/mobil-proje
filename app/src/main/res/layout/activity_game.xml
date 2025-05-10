@@ -3,92 +3,129 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/main"
     android:layout_height="match_parent">
-
-
-
-    <!-- 8x8 Dashboard (Oyun Tahtası) - Ekranın 3/4'ü -->
 
     <GridLayout
         android:id="@+id/gameBoard"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="3dp"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="3dp"
-        android:layout_marginBottom="3dp"
         android:columnCount="8"
         android:rowCount="8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"></GridLayout>
 
-        <!-- Placeholder for grid cells -->
-        <!-- Add buttons or custom views for each cell in the grid as needed -->
-
-    </GridLayout>
-
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout"
-        android:layout_width="409dp"
-        android:layout_height="150dp"
-        android:layout_marginEnd="2dp"
+        android:layout_width="416dp"
+        android:layout_height="324dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
-        <!-- Toolbar Ekleme -->
-        <!-- Player Name Text -->
-
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="32dp"
-            android:background="@color/toolbarRenk"
-            android:title="Game"
-            app:titleTextColor="@color/black"
-            app:layout_constraintBottom_toTopOf="@id/gameBoard"
+            android:layout_width="0dp"
+            android:layout_height="72dp"
+            android:background="#ADD8E6"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/homeButtonDon"
+            android:layout_width="74dp"
+            android:layout_height="59dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@null"
+            android:padding="0dp"
+            android:scaleType="centerInside"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-
-        <!-- Score Display -->
-        <TextView
-            android:layout_margin="10dp"
-            android:id="@+id/playerNameTextView"
-            android:layout_width="278dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Oyuncu Adı: "
-            android:textStyle="bold"
-            android:textSize="20dp" />
+            app:srcCompat="@drawable/home_resim" />
 
         <TextView
-            android:id="@+id/scoreTextView"
-            android:layout_width="278dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Mevcut Skor: "
-            android:textSize="20sp"
-            android:textStyle="bold">
-
-        </TextView>
-
-        <TextView
-            android:id="@+id/highestScoreTextView"
+            android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/pacifico"
+            android:text="Mayın Tarlası"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/toolbar" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/playerNameTextView"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_margin="10dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/rounded_edittext"
+            android:padding="4dp"
+            android:text="Oyuncu Adı: "
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/scoreTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/scoreTextView"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_margin="10dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/rounded_edittext"
+            android:padding="4dp"
+            android:text="Mevcut Skor: "
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/highestScoreTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/playerNameTextView"
+            app:layout_constraintVertical_bias="0.5">
+
+        </androidx.appcompat.widget.AppCompatTextView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/highestScoreTextView"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/rounded_edittext"
+            android:padding="4dp"
             android:text="En Yüksek Skor: 0 - Hiçbir oyuncu yok"
-            android:textSize="20sp" > </TextView>
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/scoreTextView"
+            app:layout_constraintStart_toStartOf="@+id/scoreTextView"
+            app:layout_constraintTop_toBottomOf="@+id/scoreTextView"
+            app:layout_constraintVertical_bias="0.5">
+
+        </androidx.appcompat.widget.AppCompatTextView>
 
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

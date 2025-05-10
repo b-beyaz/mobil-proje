@@ -5,4 +5,6 @@
     <string name="language">Dil</string>
     <string name="turkish">Türkçe</string>
     <string name="english">İngilizce</string>
+    <string name="howToPlay">"In Minesweeper, your goal is to uncover all the empty squares without detonating any mines. You will see a grid of covered squares on the game screen. Some of these squares have mines hidden beneath them. Simply tap on a square to reveal it. The numbers on the revealed squares indicate the number of mines adjacent to that square. You can long-press on squares you suspect contain mines to place a flag. These flags prevent you from accidentally tapping on mines. Use the numbers to deduce the location of the mines and continue uncovering empty squares. You win the game when you have uncovered all the empty squares! However, if you tap on a mine, the game is over. Remember to pay attention to the numbers and use logic!"</string>
+
 </resources>

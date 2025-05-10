@@ -5,78 +5,129 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".MainActivity">
 
 
-    <ImageButton
-        android:id="@+id/homeButon"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="30dp"
-        android:background="@null"
-        android:contentDescription="Ana Sayfa"
-        android:src="@drawable/home_icon"
-        android:textColor="@color/purple_500"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <LinearLayout
-        android:id="@+id/contentContainer"
-        android:layout_width="wrap_content"
-        android:layout_height="500dp"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar3"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:background="#ADD8E6"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/contentContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar3"
+        app:layout_constraintVertical_bias="0.0">
 
 
         <TextView
             android:id="@+id/settingsText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="263dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="52dp"
+            android:padding="5dp"
             android:text="@string/settings"
-            android:textSize="24sp"
-            android:textStyle="bold"
+            android:textAlignment="center"
             android:textColor="@color/dark_gray"
-            android:layout_marginBottom="10dp" />
-
-        <Switch
-            android:id="@+id/themeSwitch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/theme_switch"
-            android:textSize="20sp"
+            android:textSize="32sp"
             android:textStyle="bold"
-            android:layout_marginBottom="60dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/languageText"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:padding="5dp"
             android:text="@string/language"
-            android:textSize="20sp"
+            android:textAlignment="center"
+            android:textSize="24sp"
             android:textStyle="bold"
-            android:layout_marginBottom="20dp" />
+            app:layout_constraintEnd_toEndOf="@+id/themeSwitch"
+            app:layout_constraintStart_toStartOf="@+id/themeSwitch"
+            app:layout_constraintTop_toBottomOf="@+id/themeSwitch" />
 
         <Button
             android:id="@+id/languageButtonTr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:backgroundTint="@color/butonRenk"
             android:text="@string/turkish"
             android:textStyle="bold"
-            android:layout_marginBottom="15dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/languageText" />
 
         <Button
             android:id="@+id/languageButtonEn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:backgroundTint="@color/butonRenk"
             android:text="@string/english"
-            android:textStyle="bold" />
-    </LinearLayout>
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/languageButtonTr" />
 
+        <Switch
+            android:id="@+id/themeSwitch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="5dp"
+            android:text="@string/theme_switch"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/settingsText"
+            app:layout_constraintStart_toStartOf="@+id/settingsText"
+            app:layout_constraintTop_toBottomOf="@+id/settingsText"></Switch>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/pacifico"
+        android:text="Mayın Tarlası"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbar3" />
+
+    <ImageButton
+        android:id="@+id/homeButton"
+        android:layout_width="74dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@null"
+        android:padding="0dp"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/home_resim" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,8 +10,12 @@ import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.Switch;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import java.util.Locale;
 
@@ -21,6 +25,16 @@ public class SettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_settings); // <-- buradan sonra findViewById yapılmalı
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+
+
         // Tema ayarını oku
         sharedPreferences = getSharedPreferences("AppSettingsPrefs", 0);
         boolean isDarkMode = sharedPreferences.getBoolean("DarkMode", false);
@@ -32,13 +46,9 @@ public class SettingsActivity extends AppCompatActivity {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings); // <-- buradan sonra findViewById yapılmalı
-
         // 🧩 View'ları tanımla
         themeSwitch = findViewById(R.id.themeSwitch);
-        ImageButton homeButtonPage = findViewById(R.id.homeButon);
-
+        ImageButton homeButtonPage = findViewById(R.id.homeButton);
         Button languageButtonTr = findViewById(R.id.languageButtonTr);
         Button languageButtonEn = findViewById(R.id.languageButtonEn);
 

@@ -15,9 +15,6 @@ public interface ScoreDao {
     @Query("SELECT * FROM score")
     List<Score> getAll();
 
-    @Query("SELECT * FROM score WHERE player_name LIKE :searchText")
-    List<Score> searchByAlbumOrArtist(String searchText);
-
     @Query("SELECT * FROM score WHERE difficulty = :difficulty")
     List<Score> getAllByDifficulty (String difficulty);
     // Kolay seviyesindeki en yüksek skoru alıyorz.

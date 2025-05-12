@@ -25,10 +25,11 @@ public class Score_RecycleViewAdapter extends RecyclerView.Adapter<Score_Recycle
 
     Context context;
     List<Score> scores;
-    private ActionMode actionMode;
+
+   /* private ActionMode actionMode;
     private List<Score> selectedScores = new ArrayList<>();
     private ScoreDao scoreDao;
-    private AppDatabase db;
+    private AppDatabase db;*/
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView listScore;
         TextView listDifficulty;

@@ -13,7 +13,6 @@ import java.util.concurrent.Executors;
 @Database(entities = {Score.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract ScoreDao scoreDao();
-
     private static volatile AppDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
     public static final ExecutorService databaseWriteExecutor =

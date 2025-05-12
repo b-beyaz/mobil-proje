@@ -9,11 +9,11 @@
     tools:context=".MainActivity">
 
 
-    <androidx.appcompat.widget.Toolbar
+    <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar3"
         android:layout_width="0dp"
         android:layout_height="72dp"
-        android:background="#ADD8E6"
+        android:background="@color/toolbarRenk"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,28 +35,30 @@
         app:layout_constraintVertical_bias="0.0">
 
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/settingsText"
             android:layout_width="263dp"
-            android:layout_height="52dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="52dp"
             android:padding="5dp"
-            android:text="@string/settings"
+            android:text="@string/setting_title"
             android:textAlignment="center"
-            android:textColor="@color/dark_gray"
-            android:textSize="32sp"
+            android:textColor="@color/textPrimary"
+            android:textSize="40sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/languageText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="40dp"
             android:padding="5dp"
-            android:text="@string/language"
+            android:textColor="@color/textPrimary"
+            android:text="@string/choose_language"
             android:textAlignment="center"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -64,26 +66,38 @@
             app:layout_constraintStart_toStartOf="@+id/themeSwitch"
             app:layout_constraintTop_toBottomOf="@+id/themeSwitch" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/languageButtonTr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
+            android:layout_margin="10dp"
+            android:layout_marginTop="30dp"
             android:backgroundTint="@color/butonRenk"
-            android:text="@string/turkish"
-            android:textStyle="bold"
+            android:padding="12dp"
+            android:text="@string/turkish_button"
+            android:textColor="@color/textPrimary"
+            android:textSize="20sp"
+            app:cornerRadius="12dp"
+            app:iconGravity="textStart"
+            app:iconPadding="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/languageText" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/languageButtonEn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_margin="10dp"
+            android:layout_marginTop="20dp"
+            android:padding="12dp"
+            android:text="@string/english_button"
+            android:textSize="20sp"
+            app:cornerRadius="12dp"
+            android:textColor="@color/textPrimary"
             android:backgroundTint="@color/butonRenk"
-            android:text="@string/english"
-            android:textStyle="bold"
+            app:iconGravity="textStart"
+            app:iconPadding="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toStartOf="parent"
@@ -93,9 +107,10 @@
             android:id="@+id/themeSwitch"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="96dp"
             android:padding="5dp"
-            android:text="@string/theme_switch"
+            android:text="@string/choose_theme"
+            android:textColor="@color/textPrimary"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/settingsText"
@@ -104,13 +119,14 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:fontFamily="@font/pacifico"
-        android:text="Mayın Tarlası"
+        android:text="@string/app_name"
+        android:textColor="@color/textPrimary"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar3"
         app:layout_constraintStart_toStartOf="parent"
@@ -125,6 +141,7 @@
         android:background="@null"
         android:padding="0dp"
         android:scaleType="centerInside"
+        android:contentDescription="@string/home_page"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/home_resim" />

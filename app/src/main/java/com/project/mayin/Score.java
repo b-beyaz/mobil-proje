@@ -10,14 +10,12 @@ public class Score {
 
     @PrimaryKey(autoGenerate = true)
     public int uid;
-
     @ColumnInfo(name = "player_name")
     public String playerName;
     @ColumnInfo(name = "difficulty")
     public String difficulty;
     @ColumnInfo(name = "score")
     public int score;
-
     public Score(String playerName, String difficulty, int score) {
         this.playerName = playerName;
         this.difficulty = difficulty;

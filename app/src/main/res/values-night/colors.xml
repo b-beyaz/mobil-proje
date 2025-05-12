@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Gece modu renkleri -->
-    <color name="background">#121212</color>        <!-- Ana arka plan (çok koyu gri) -->
-    <color name="surface">#1E1E1E</color>            <!-- Kart/alt alanlar -->
-    <color name="primary">#BB86FC</color>            <!-- Vurgulu buton/metin rengi -->
-    <color name="onPrimary">#000000</color>          <!-- Primary üzerine gelen metin -->
-    <color name="textPrimary">#FFFFFF</color>        <!-- Ana metin rengi -->
-    <color name="textSecondary">#B3B3B3</color>      <!-- Yardımcı metin -->
-    <color name="divider">#2C2C2C</color>            <!-- Çizgiler/bölücüler -->
-    <color name="purple_500">#9C27B0</color>
-    <color name="purple_700">#7B1FA2</color>
+    <!-- Arka Planlar -->
+    <color name="background">#2B1B17</color>
+    <color name="surface">#3D2C29</color>
+
+    <!-- Ana Renkler -->
+    <color name="primary">#FF7043</color>
+    <color name="onPrimary">#1A0E0A</color>
+
+    <color name="textPrimary">#000000</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
-    <color name="dark_gray">#616161</color>
+    <color name="dark_gray">#423E3E</color>
+
+    <color name="toolbarRenk">#577557</color>
+    <color name="butonRenk">#3E51AB</color>
 </resources>

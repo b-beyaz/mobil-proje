@@ -20,15 +20,15 @@ public interface ScoreDao {
 
     @Query("SELECT * FROM score WHERE difficulty = :difficulty")
     List<Score> getAllByDifficulty (String difficulty);
-    // Kolay seviyesindeki en yüksek skoru al
+    // Kolay seviyesindeki en yüksek skoru alıyorz.
     @Query("SELECT * FROM score WHERE difficulty = 'Kolay' ORDER BY score DESC LIMIT 1")
     Score getHighestScoreForEasy();
 
-    // Orta seviyesindeki en yüksek skoru al
+    // Orta seviyesindeki en yüksek skoru alıyoruz
     @Query("SELECT * FROM score WHERE difficulty = 'Orta' ORDER BY score DESC LIMIT 1")
     Score getHighestScoreForMedium();
 
-    // Zor seviyesindeki en yüksek skoru al
+    // Zor seviyesindeki en yüksek skoru alcaz
     @Query("SELECT * FROM score WHERE difficulty = 'Zor' ORDER BY score DESC LIMIT 1")
     Score getHighestScoreForHard();
 

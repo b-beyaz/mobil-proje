@@ -2,8 +2,10 @@ package com.project.mayin;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,8 +31,8 @@ public class GameActivity extends AppCompatActivity {
     private int[][] bombMap;
     private String difficulty;
     private String playerName;
-
     private ScoreDao scoreDao;
+    ImageButton homeButtonPage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,19 +44,17 @@ public class GameActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-
-
-        playerNameTextView = findViewById(R.id.playerNameTextView);
-        scoreTextView = findViewById(R.id.scoreTextView);
-        highestScoreTextView = findViewById(R.id.highestScoreTextView);
-        gameBoard = findViewById(R.id.gameBoard);
+        initComponents();
 
         playerName = getIntent().getStringExtra("playerName");
         difficulty = getIntent().getStringExtra("difficulty");
 
-        playerNameTextView.setText("Player: " + playerName);
-        scoreTextView.setText("Score: " + score);
+        /*playerNameTextView.setText("Player: " + playerName);
+        scoreTextView.setText("Score: " + score);*/
+
+        playerNameTextView.setText(getString(R.string.player_name_format, playerName));
+        scoreTextView.setText(getString(R.string.score_format, score));
+
 
         setBoardDimensions();
         createGameBoard();
@@ -63,6 +63,18 @@ public class GameActivity extends AppCompatActivity {
         AppDatabase db = AppDatabase.getDatabase(this);
         scoreDao = db.scoreDao();
         showHighestScore();
+        homeButtonPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                backToHomePage();
+            }
+        });
+    }
+
+    private void backToHomePage() {
+        Intent intent = new Intent(GameActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void showHighestScore() {
@@ -81,9 +93,11 @@ public class GameActivity extends AppCompatActivity {
 
             runOnUiThread(() -> {
                 if (highestScore != null) {
-                    highestScoreTextView.setText("En Yüksek Skor: " + highestScore.score + " - " + highestScore.playerName);
+                    String formattedText = getString(R.string.highest_score_format, highestScore.score, highestScore.playerName);
+                    highestScoreTextView.setText(formattedText);
                 } else {
-                    highestScoreTextView.setText("En Yüksek Skor: 0 - Hiçbir oyuncu yok");
+                    highestScoreTextView.setText(getString(R.string.no_high_score));
+
                 }
             });
         }).start();
@@ -134,6 +148,7 @@ public class GameActivity extends AppCompatActivity {
                 button.setOnClickListener(v -> onGridCellClicked(finalRow, finalCol));
                 buttons[row][col] = button;
                 gameBoard.addView(button);
+
             }
         }
     }
@@ -170,21 +185,49 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void onGridCellClicked(int row, int col) {
+        // Oyun bitmişse hiçbir işlem yapılmasın
         if (gameOver) return;
 
-        if (bombMap[row][col] == 1) {
-            gameOver = true;
-            buttons[row][col].setText("💣");
-            showRestartDialog();
+        // Eğer butona tıklanmışsa ve metin boş değilse, yani buton zaten açılmışsa tıklamayı engelle
+        if (!buttons[row][col].getText().toString().isEmpty()) {
             return;
         }
 
-        int adjacentBombs = countAdjacentBombs(row, col);
-        buttons[row][col].setText(String.valueOf(adjacentBombs));
+        if (bombMap[row][col] == 1) {
+            gameOver = true;
+            buttons[row][col].setText("💣");  // Mayına basıldı
+        } else {
+            int adjacentBombs = countAdjacentBombs(row, col);
+            buttons[row][col].setText(String.valueOf(adjacentBombs));
+            score += 10;
+            scoreTextView.setText(getString(R.string.score_format, score));
+        }
 
-        score += 10;
-        scoreTextView.setText("Score: " + score);
+        // Kazanma durumu kontrolü
+        if (checkIfGameWon()) {
+            gameOver = true; // Tüm güvenli kutular açıldıysa oyun kazanılır
+        }
+
+        // Eğer oyun bitmişse, kazandığınız veya kaybettiğiniz duruma göre dialog gösterilecek
+        if (gameOver) {
+            showRestartDialog(); // Kaybettiğiniz veya kazandığınızda doğru mesajı göster
+        }
+
     }
+
+
+    private boolean checkIfGameWon() {
+        for (int row = 0; row < bombMap.length; row++) {
+            for (int col = 0; col < bombMap[row].length; col++) {
+                // Eğer bir hücrede bomba yoksa ve hala açılmamışsa, oyun kazanılmadı demektir
+                if (bombMap[row][col] != 1 && buttons[row][col].getText().toString().isEmpty()) {
+                    return false; // Hala açılmamış bir güvenli hücre varsa, oyun bitmedi
+                }
+            }
+        }
+        return true; // Tüm güvenli hücreler açıldığında oyun kazanılmıştır
+    }
+
 
     private int countAdjacentBombs(int row, int col) {
         int count = 0;
@@ -204,19 +247,60 @@ public class GameActivity extends AppCompatActivity {
         }
         return count;
     }
+    /*private void showRestartDialog() {
+        // Eğer oyuncu kaybettiyse
+        String title;
+        String message;
 
-    private void showRestartDialog() {
+        if (gameOver) {
+            if (checkIfGameWon()) {
+                title = getString(R.string.dialog_title_game_won); // Kazanma başlığı
+                message = getString(R.string.dialog_message_game_won); // Kazanma mesajı
+            } else {
+                title = getString(R.string.dialog_title_game_over); // Kaybetme başlığı
+                message = getString(R.string.dialog_message_game_over); // Kaybetme mesajı
+            }
+        } else {
+            title = getString(R.string.dialog_title_game_won); // Kazanma başlığı
+            message = getString(R.string.dialog_message_game_won); // Kazanma mesajı
+        }
+
         new AlertDialog.Builder(this)
-                .setTitle("Oyun Bitti!")
-                .setMessage("Game Over! Oyun tekrar başlatılsın mı?")
-                .setPositiveButton("Evet", (dialog, which) -> restartGame())
-                .setNegativeButton("Hayır", (dialog, which) -> backToHome())
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton(getString(R.string.yes), (dialog, which) -> restartGame())  // Oyunu yeniden başlat
+                .setNegativeButton(getString(R.string.no), (dialog, which) -> backToHome())  // Ana sayfaya dön
                 .setCancelable(false)
                 .show();
 
-        Toast.makeText(GameActivity.this, "Lütfen evet ya da hayıra tıklayınız", Toast.LENGTH_LONG).show();
-    }
+        Toast.makeText(GameActivity.this, gameOver ? getString(R.string.toast_game_over) : getString(R.string.toast_game_won), Toast.LENGTH_SHORT).show();
+    }*/
+    private void showRestartDialog() {
+        String title = "";  // Başlangıç değeri atanmalı
+        String message = "";  // Başlangıç değeri atanmalı
 
+        if (gameOver) {
+            if (checkIfGameWon()) {
+                title = getString(R.string.dialog_title_game_won); // Kazanma başlığı
+                message = getString(R.string.dialog_message_game_won); // Kazanma mesajı
+                Toast.makeText(GameActivity.this, getString(R.string.toast_game_won), Toast.LENGTH_SHORT).show();  // Kazanma mesajı
+
+            } else {
+                title = getString(R.string.dialog_title_game_over); // Kaybetme başlığı
+                message = getString(R.string.dialog_message_game_over); // Kaybetme mesajı
+                Toast.makeText(GameActivity.this, getString(R.string.toast_game_over), Toast.LENGTH_SHORT).show();  // Kaybetme mesajı
+
+            }
+        }
+
+        new AlertDialog.Builder(this)
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton(getString(R.string.yes), (dialog, which) -> restartGame())  // Oyunu yeniden başlat
+                .setNegativeButton(getString(R.string.no), (dialog, which) -> backToHome())  // Ana sayfaya dön
+                .setCancelable(false)
+                .show();
+    }
     private void backToHome() {
         Score scoreEntry = new Score(playerName, difficulty, score);
         new Thread(() -> scoreDao.insertAll(scoreEntry)).start();
@@ -230,13 +314,24 @@ public class GameActivity extends AppCompatActivity {
         new Thread(() -> scoreDao.insertAll(scoreEntry)).start();
 
         score = 0;
-        scoreTextView.setText("Score: " + score);
+
+        //scoreTextView.setText("Score: " + score);
+        scoreTextView.setText(getString(R.string.score_format, score));
+
 
         Intent intent = new Intent(GameActivity.this, GameActivity.class);
         intent.putExtra("playerName", playerName);
         intent.putExtra("difficulty", difficulty);
         startActivity(intent);
         finish();
+    }
+    private void initComponents(){
+        playerNameTextView = findViewById(R.id.playerNameTextView);
+        scoreTextView = findViewById(R.id.scoreTextView);
+        highestScoreTextView = findViewById(R.id.highestScoreTextView);
+        gameBoard = findViewById(R.id.gameBoard);
+        homeButtonPage = findViewById(R.id.homeButtonDon);
+
     }
 }
 

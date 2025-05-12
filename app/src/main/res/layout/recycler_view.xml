@@ -7,25 +7,29 @@
     android:gravity="center_vertical"
     android:weightSum="3">
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/listPlayerName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textColor="@color/textPrimary"
         android:layout_weight="1"
-        android:text="Player Name" />
+        android:text="@string/player_name" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/listDifficulty"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Difficulty" />
+        android:textColor="@color/textPrimary"
 
-    <TextView
+        android:layout_weight="1"
+        android:text="@string/difficulty" />
+
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/listScore"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textColor="@color/textPrimary"
         android:layout_weight="1"
-        android:text="Score" />
+        android:text="@string/score" />
 </LinearLayout>
 

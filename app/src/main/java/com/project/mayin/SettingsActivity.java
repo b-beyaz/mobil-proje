@@ -34,7 +34,6 @@ public class SettingsActivity extends AppCompatActivity {
             return insets;
         });
 
-
         // Tema ayarını oku
         sharedPreferences = getSharedPreferences("AppSettingsPrefs", 0);
         boolean isDarkMode = sharedPreferences.getBoolean("DarkMode", false);
@@ -99,7 +98,6 @@ public class SettingsActivity extends AppCompatActivity {
         Configuration config = new Configuration();
         config.setLocale(locale);
         getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
-
         Intent refresh = new Intent(this, SettingsActivity.class);
         startActivity(refresh);
         finish();

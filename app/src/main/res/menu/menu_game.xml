@@ -3,26 +3,23 @@
 
     <item
         android:id="@+id/item_x1"
-        android:title="Ayarlar"
+        android:title="@string/setting_bottom_navigation"
         android:icon="@drawable/settings_icon"
         android:iconTint="@color/black"
         />
 
     <item
         android:id="@+id/item_x2"
-        android:title="Skor Tablosu"
+        android:title="@string/score_bottom_navigation"
         android:iconTint="@color/black"
         android:icon="@drawable/skor"
 
         />
     <item
         android:id="@+id/item_x3"
-        android:title="Nasıl Oynanır"
+        android:title="@string/howtoplay_bottom_navigation"
         android:iconTint="@color/black"
         android:icon="@drawable/howto_icon"
 
         />
-
-
-
 </menu>

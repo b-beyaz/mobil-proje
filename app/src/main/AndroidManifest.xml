@@ -15,22 +15,28 @@
 
         <activity
             android:name=".HowToPlayActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".ScoreActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".SettingsActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".GameActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:exported="true"/>
 
             <activity
                 android:name=".SplashActivity"
+                android:screenOrientation="portrait"
                 android:exported="true" >
                 <intent-filter>
                     <action android:name="android.intent.action.MAIN" />

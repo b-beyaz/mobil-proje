@@ -2,9 +2,7 @@
 package com.project.mayin;
 
 //import static androidx.core.content.ContextCompat.getString;
-
 import static androidx.core.content.ContextCompat.startActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -17,11 +15,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,10 +29,22 @@ public class Score_RecycleViewAdapter extends RecyclerView.Adapter<Score_Recycle
     private List<Score> selectedScores = new ArrayList<>();
     private ScoreDao scoreDao;
     private AppDatabase db;
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView listScore;
+        TextView listDifficulty;
+        TextView listPlayerName;
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            listScore = itemView.findViewById(R.id.listScore);
+            listDifficulty = itemView.findViewById(R.id.listDifficulty);
+            listPlayerName = itemView.findViewById(R.id.listPlayerName);
+        }
+    }
     public Score_RecycleViewAdapter(Context context, List<Score> scores){
         this.context = context;
         this.scores = scores;
     }
+
     @NonNull
     @Override
     public Score_RecycleViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -51,26 +59,15 @@ public class Score_RecycleViewAdapter extends RecyclerView.Adapter<Score_Recycle
         Score score = scores.get(position);
 
         int scoreValue = score.score; // Assuming score is an int
-        String formattedScore = String.format("%,d", scoreValue);
         holder.listPlayerName.setText(scores.get(position).playerName);
         holder.listDifficulty.setText(scores.get(position).difficulty);
+        String formattedScore = String.format("%,d", scoreValue);
         holder.listScore.setText(formattedScore);
+
     }
+
     @Override
     public int getItemCount() {
         return scores.size();
     }
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView listScore;
-        TextView listDifficulty;
-        TextView listPlayerName;
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-
-            listScore = itemView.findViewById(R.id.listScore);
-            listDifficulty = itemView.findViewById(R.id.listDifficulty);
-            listPlayerName = itemView.findViewById(R.id.listPlayerName);
-        }
-    }
-
 }

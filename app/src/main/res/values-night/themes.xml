@@ -1,12 +1,15 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Mayin" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
-        <item name="colorPrimary">@color/black</item>
-        <item name="colorPrimaryVariant">@color/dark_gray</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <item name="android:windowBackground">@color/black</item>
-        <item name="colorOnBackground">@color/white</item>
+    <style name="Base.Theme.Mayin" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">#3F51B5</item>
+        <item name="colorPrimaryVariant">#831616</item>
+        <item name="colorOnPrimary">#3F51B5</item>
+        <item name="android:colorBackground">#D9D6D9</item>
+        <item name="android:statusBarColor">#8D9266</item>
+        <item name="android:textColor">#FFFFFF</item>
+
     </style>
+    <!-- <style name="Theme.Mayin" parent="Base.Theme.Mayin" /> -->
 </resources>

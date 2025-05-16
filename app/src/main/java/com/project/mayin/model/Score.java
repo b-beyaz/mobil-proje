@@ -1,5 +1,5 @@
 
-package com.project.mayin;
+package com.project.mayin.model;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -13,10 +13,10 @@ public class Score {
     @ColumnInfo(name = "player_name")
     public String playerName;
     @ColumnInfo(name = "difficulty")
-    public String difficulty;
+    public int difficulty;
     @ColumnInfo(name = "score")
     public int score;
-    public Score(String playerName, String difficulty, int score) {
+    public Score(String playerName, int difficulty, int score) {
         this.playerName = playerName;
         this.difficulty = difficulty;
         this.score = score;

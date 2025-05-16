@@ -1,5 +1,5 @@
 
-package com.project.mayin;
+package com.project.mayin.db;
 
 import android.content.Context;
 
@@ -7,10 +7,12 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import com.project.mayin.model.Score;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Score.class}, version = 1)
+@Database(entities = {Score.class}, version = 2)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract ScoreDao scoreDao();
     private static volatile AppDatabase INSTANCE;
@@ -24,7 +26,7 @@ public abstract class AppDatabase extends RoomDatabase {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                                     AppDatabase.class, "Score")
-                            .fallbackToDestructiveMigration() // Yıkıcı geçişe izin ver
+                            .fallbackToDestructiveMigration()
                             .allowMainThreadQueries()
                             .build();
                 }

@@ -1,4 +1,4 @@
-package com.project.mayin;
+package com.project.mayin.view;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,6 +16,8 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.project.mayin.R;
 
 import java.util.Locale;
 

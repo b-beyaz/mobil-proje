@@ -1,4 +1,4 @@
-package com.project.mayin;
+package com.project.mayin.view;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -10,17 +10,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.project.mayin.R;
+import com.project.mayin.db.AppDatabase;
+import com.project.mayin.db.ScoreDao;
+import com.project.mayin.model.Score;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,9 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView easyHighScoreTextView;
     private TextView mediumHighScoreTextView;
     private TextView hardHighScoreTextView;
-    private ImageButton settingsButtonPage;
-    private ImageButton howToPlayPage;
-    private ScoreDao scoreDao; // ScoreDao referansı
+    private ScoreDao scoreDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         initComponents();
 
-        // ScoreDao'yu başlatıyoruz (veritabanı işlemleri için)
+        // ScoreDao yu başlatıyoruz veritabanı işlemleri için
         AppDatabase db = AppDatabase.getDatabase(this);
         scoreDao = db.scoreDao();
 
@@ -50,31 +47,28 @@ public class MainActivity extends AppCompatActivity {
         showHighestScores();
 
         // Kolay butonuna tıklandığında
-        easyButton.setOnClickListener(v -> startGame("Kolay"));
+        easyButton.setOnClickListener(v -> startGame(1));
 
         // Orta butonuna tıklandığında
-        mediumButton.setOnClickListener(v -> startGame("Orta"));
+        mediumButton.setOnClickListener(v -> startGame(2));
 
         // Zor butonuna tıklandığında
-        hardButton.setOnClickListener(v -> startGame("Zor"));
+        hardButton.setOnClickListener(v -> startGame(3));
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                // Switch yerine if-else kullanalım
-                if (item.getItemId() == R.id.item_x1) { // Ayarlar
-                    // Ayarlar sayfasına geçiş
+                if (item.getItemId() == R.id.item_x1) { // Ayarlara gidecek
                     Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
                     startActivity(intent);
                     return true;
                 } else if (item.getItemId() == R.id.item_x2) { // Score Tablosu
-                    // Score Tablosu sayfasına geçiş
                     Intent intent = new Intent(MainActivity.this, ScoreActivity.class);
                     startActivity(intent);
                     return true;
                 } else if (item.getItemId() == R.id.item_x3) { // HowToPlay Ekranı
-                    // HowToPlay sayfasına geçiş
                     Intent intent = new Intent(MainActivity.this, HowToPlayActivity.class);
                     startActivity(intent);
                     return true;
@@ -87,22 +81,18 @@ public class MainActivity extends AppCompatActivity {
         TextWatcher textWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 validatePlayerName(); // her yazı değişiminde kontrol et
             }
-
             @Override
             public void afterTextChanged(Editable s) {}
         };
-
         playerNameEditText.addTextChangedListener(textWatcher);
-
     }
     private boolean validatePlayerName() {
         String name = playerNameEditText.getText().toString().trim();
-        Drawable errorIcon = ContextCompat.getDrawable(this, R.drawable.uyari_icon); // hata ikonun varsa
+        Drawable errorIcon = ContextCompat.getDrawable(this, R.drawable.uyari_icon);
         if (errorIcon != null) {
             int width = errorIcon.getIntrinsicWidth();
             int height = errorIcon.getIntrinsicHeight();
@@ -125,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // Oyun başlatma fonksiyonu
-    private void startGame(String difficulty) {
+    private void startGame(int difficulty) {
         if (!validatePlayerName()) {
             return;
         }
@@ -176,7 +166,6 @@ public class MainActivity extends AppCompatActivity {
         easyHighScoreTextView = findViewById(R.id.easyHighScoreTextView);
         mediumHighScoreTextView = findViewById(R.id.mediumHighScoreTextView);
         hardHighScoreTextView = findViewById(R.id.hardHighScoreTextView);
-        //howToPlayPage =findViewById(R.id.howToPlay);
-        //settingsButtonPage =findViewById(R.id.settingsButtonPage);
+
     }
 }

@@ -1,17 +1,30 @@
 package com.project.mayin.view;
 
+import static android.os.SystemClock.sleep;
+import static android.view.View.INVISIBLE;
+import static android.view.View.VISIBLE;
+
 import android.content.Intent;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.SoundPool;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -37,6 +50,13 @@ public class GameActivity extends AppCompatActivity {
     private String playerName;
     private ScoreDao scoreDao;
     ImageButton homeButtonPage;
+    SoundPool soundPool;
+    int soundCorrect, soundExplosion;
+    Boolean soundOn = true;
+    ImageButton btnSound;
+    private MediaPlayer mediaPlayer;
+    private TextView txtAnimation;
+    ImageView endImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +69,10 @@ public class GameActivity extends AppCompatActivity {
             return insets;
         });
         initComponents();
-
+        soundInnit();
         playerName = getIntent().getStringExtra("playerName");
         difficulty = getIntent().getIntExtra("difficulty",2);
-
+        endImage.setVisibility(INVISIBLE);
 
         playerNameTextView.setText(getString(R.string.player_name_format, playerName));
         scoreTextView.setText(getString(R.string.score_format, score));
@@ -197,9 +217,19 @@ public class GameActivity extends AppCompatActivity {
         }
 
         if (bombMap[row][col] == 1) {
+            buttons[row][col].setText("💣");
+            if (soundOn) soundPool.play(soundExplosion, 2, 2, 0, 0, 1); //Eğer ses açıksa patlama sesini çalar.
             gameOver = true;
-            buttons[row][col].setText("💣");  // Mayına basılıyor
+
         } else {
+            if (soundOn) soundPool.play(soundCorrect, 2, 2, 0, 0, 1); //Eğer ses açıksa doğru basma sesini çalar.
+            txtAnimation.setText("+10");
+            txtAnimation.setVisibility(VISIBLE);
+
+            // 1 saniye sonra gizler
+            new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                txtAnimation.setVisibility(INVISIBLE); //
+            }, 1000); // 1000 ms = 1 saniye
             int adjacentBombs = countAdjacentBombs(row, col);
             buttons[row][col].setText(String.valueOf(adjacentBombs));
             score += 10;
@@ -212,7 +242,7 @@ public class GameActivity extends AppCompatActivity {
         }
 
         if (gameOver) {
-            showRestartDialog();
+            showFinishEvent();
         }
 
     }
@@ -250,32 +280,64 @@ public class GameActivity extends AppCompatActivity {
         return count;
     }
 
-    private void showRestartDialog() {
+    private void showFinishEvent() {
         String title = "";
         String message = "";
 
         if (gameOver) {
             if (checkIfGameWon()) {
-                title = getString(R.string.dialog_title_game_won);
-                message = getString(R.string.dialog_message_game_won);
+                endImage.setImageResource(R.drawable.happy);
+                endImage.setVisibility(View.VISIBLE);
+
                 Toast.makeText(GameActivity.this, getString(R.string.toast_game_won), Toast.LENGTH_SHORT).show();
 
+                // 1 saniye sonra dialogu göster
+                new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                    showRestartDialog(
+                            getString(R.string.dialog_title_game_won),
+                            getString(R.string.dialog_title_game_won)
+                    );
+                }, 2000);
+
             } else {
-                title = getString(R.string.dialog_title_game_over);
-                message = getString(R.string.dialog_message_game_over);
+                // Kaybetme durumunda önce patlama resmini göster
+                endImage.setImageResource(R.drawable.sad);
+                endImage.setVisibility(View.VISIBLE);
+
                 Toast.makeText(GameActivity.this, getString(R.string.toast_game_over), Toast.LENGTH_SHORT).show();
 
+                // 1 saniye sonra dialogu göster
+                new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                    showRestartDialog(
+                            getString(R.string.dialog_title_game_over),
+                            getString(R.string.dialog_message_game_over)
+                    );
+                }, 2000);
             }
         }
 
-        new AlertDialog.Builder(this)
+    }
+    private void showRestartDialog(String title, String message) {
+        AlertDialog alertDialog = new AlertDialog.Builder(this)
                 .setTitle(title)
                 .setMessage(message)
                 .setPositiveButton(getString(R.string.yes), (dialog, which) -> restartGame())
                 .setNegativeButton(getString(R.string.no), (dialog, which) -> backToHome())
                 .setCancelable(false)
-                .show();
+                .create();
+
+        alertDialog.show();
+
+        Button negativeButton = alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+        Button positiveButton = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE);
+
+        negativeButton.setTextColor(ContextCompat.getColor(this, R.color.red));
+        positiveButton.setTextColor(ContextCompat.getColor(this, R.color.green));
     }
+
+
+
+
     private void backToHome() {
         Score scoreEntry = new Score(playerName, difficulty, score);
         new Thread(() -> scoreDao.insertAll(scoreEntry)).start();
@@ -304,10 +366,52 @@ public class GameActivity extends AppCompatActivity {
         highestScoreTextView = findViewById(R.id.highestScoreTextView);
         gameBoard = findViewById(R.id.gameBoard);
         homeButtonPage = findViewById(R.id.homeButtonDon);
+        btnSound = findViewById(R.id.btnSound);
+        txtAnimation = findViewById(R.id.txtAnimation);
+        endImage = findViewById(R.id.endImage);
 
     }
 
+    private void soundInnit(){
+        AudioAttributes audioAttributes = new AudioAttributes.Builder()
+                .setUsage(AudioAttributes.USAGE_GAME)
+                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                .build();
 
+        soundPool = new SoundPool.Builder()
+                .setMaxStreams(5)
+                .setAudioAttributes(audioAttributes)
+                .build();
+
+        soundCorrect = soundPool.load(this, R.raw.correct, 1);
+        soundExplosion = soundPool.load(this, R.raw.explosion, 1);
+
+        // Müzik dosyasını mediaPlayer nesnesine yükler
+        mediaPlayer = MediaPlayer.create(this, R.raw.bgm);
+        mediaPlayer.setLooping(true);
+        mediaPlayer.setVolume(0.5f, 0.5f);
+        mediaPlayer.start();
+    }
+
+    public void soundOnOff(View view) {
+        if (soundOn) {
+            soundPool.autoPause();
+            mediaPlayer.pause();
+            soundOn = false;
+            btnSound.setImageResource(R.drawable.sound_off);
+        } else{
+            soundPool.autoResume();
+            mediaPlayer.start();
+            soundOn = true;
+            btnSound.setImageResource(R.drawable.sound_on);
+        }
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mediaPlayer.release();
+        soundPool.release();
+    }
 
 }
 

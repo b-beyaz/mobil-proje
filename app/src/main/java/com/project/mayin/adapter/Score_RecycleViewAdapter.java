@@ -6,6 +6,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -27,13 +28,14 @@ public class Score_RecycleViewAdapter extends RecyclerView.Adapter<Score_Recycle
     private AppDatabase db;*/
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView listScore;
-        TextView listDifficulty;
+        RatingBar listDifficulty;
         TextView listPlayerName;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             listScore = itemView.findViewById(R.id.listScore);
             listDifficulty = itemView.findViewById(R.id.listDifficulty);
             listPlayerName = itemView.findViewById(R.id.listPlayerName);
+            listDifficulty.setNumStars(3);
         }
     }
     public Score_RecycleViewAdapter(Context context, List<Score> scores){
@@ -56,7 +58,7 @@ public class Score_RecycleViewAdapter extends RecyclerView.Adapter<Score_Recycle
 
         int scoreValue = score.score; // Puanın bir tam sayı olduğunu varsayıyoz
         holder.listPlayerName.setText(scores.get(position).playerName);
-        holder.listDifficulty.setText(String.valueOf(scores.get(position).difficulty));
+        holder.listDifficulty.setRating(scores.get(position).difficulty);
         String formattedScore = String.format("%,d", scoreValue);
         holder.listScore.setText(formattedScore);
 

@@ -47,6 +47,23 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
+            android:id="@+id/btnSound"
+            android:layout_width="74dp"
+            android:layout_height="59dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:background="@null"
+            android:contentDescription="@string/home_page"
+            android:padding="0dp"
+            android:scaleType="centerInside"
+            app:layout_constraintEnd_toStartOf="@id/homeButtonDon"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/sound_on"
+            android:onClick="soundOnOff"
+            android:scaleX="2"
+            android:scaleY="2"/>
+
+        <ImageButton
             android:id="@+id/homeButtonDon"
             android:layout_width="74dp"
             android:layout_height="59dp"
@@ -109,6 +126,24 @@
         </com.google.android.material.textview.MaterialTextView>
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtAnimation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:text=""
+            android:textColor="@color/green"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/highestScoreTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.338"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/playerNameTextView"
+            app:layout_constraintVertical_bias="0.600">
+
+        </com.google.android.material.textview.MaterialTextView>
+
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/highestScoreTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -128,6 +163,16 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/endImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/result_image"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="320dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

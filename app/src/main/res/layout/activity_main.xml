@@ -38,9 +38,11 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:background="@drawable/shape_new"
+        android:backgroundTint="@color/green"
         android:padding="10dp"
+        android:maxLines="1"
         android:text="@string/easy_mode"
-        android:textColor="@color/textPrimary"
+        android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,13 +54,15 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:background="@drawable/shape_new"
+        android:backgroundTint="@color/red"
         android:padding="10dp"
+        android:maxLines="1"
         android:text="@string/hard_mode"
-        android:textColor="@color/textPrimary"
+        android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/easyHighScoreTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/mediumHighScoreTextView" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/mediumHighScoreTextView"
@@ -66,13 +70,15 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:background="@drawable/shape_new"
+        android:backgroundTint="@color/yellow"
         android:padding="10dp"
+        android:maxLines="1"
         android:text="@string/medium_mode"
-        android:textColor="@color/textPrimary"
+        android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hardHighScoreTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/easyHighScoreTextView" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/easyButton"
@@ -81,18 +87,18 @@
         android:layout_margin="10dp"
         android:layout_marginTop="20dp"
         android:padding="12dp"
-        android:text="@string/easy_button"
+        android:text="@string/basic_star"
         android:textSize="20sp"
         app:cornerRadius="12dp"
         android:textColor="@color/textPrimary"
-        android:backgroundTint="@color/butonRenk"
+        android:backgroundTint="@color/green"
         app:iconGravity="textStart"
         app:iconPadding="8dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
         app:layout_constraintEnd_toStartOf="@+id/mediumButton"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mediumHighScoreTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/hardHighScoreTextView" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/mediumButton"
@@ -100,18 +106,18 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:padding="12dp"
-        android:text="@string/medium_button"
+        android:text="@string/medium_star"
         android:textSize="20sp"
         app:cornerRadius="12dp"
         app:iconGravity="textStart"
         android:textColor="@color/textPrimary"
-        android:backgroundTint="@color/butonRenk"
+        android:backgroundTint="@color/yellow"
         app:iconPadding="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/easyButton"
+        app:layout_constraintBottom_toBottomOf="@+id/bottomNavigation"
         app:layout_constraintEnd_toStartOf="@+id/hardButton"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/easyButton"
-        app:layout_constraintTop_toTopOf="@+id/easyButton" />
+        app:layout_constraintTop_toTopOf="@+id/hardHighScoreTextView" />
 
 
     <com.google.android.material.button.MaterialButton
@@ -120,18 +126,18 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:padding="12dp"
-        android:text="@string/hard_button"
+        android:text="@string/hard_star"
         android:textSize="20sp"
         app:cornerRadius="12dp"
         android:textColor="@color/textPrimary"
         app:iconGravity="textStart"
-        android:backgroundTint="@color/butonRenk"
+        android:backgroundTint="@color/red"
         app:iconPadding="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/easyButton"
+        app:layout_constraintBottom_toBottomOf="@+id/bottomNavigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/mediumButton"
-        app:layout_constraintTop_toTopOf="@+id/easyButton" />
+        app:layout_constraintTop_toTopOf="@+id/hardHighScoreTextView" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"

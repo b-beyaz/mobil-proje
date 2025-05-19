@@ -11,24 +11,39 @@
         android:id="@+id/listPlayerName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/textPrimary"
+        android:textColor="@color/textRenk"
         android:layout_weight="1"
-        android:text="@string/player_name" />
+        android:text="@string/player_name"
+        android:textSize="16sp"/>
 
-    <com.google.android.material.textview.MaterialTextView
+    <RatingBar
         android:id="@+id/listDifficulty"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/textPrimary"
+        style="?android:attr/ratingBarStyleSmall"
+
+        android:isIndicator="true"
+        android:numStars="3"
+        android:stepSize="1"
+        android:max="3"
+        android:scaleX="1.50"
+        android:scaleY="1.50"
+        android:progressTint="@color/yellow"
+        android:secondaryProgressTint="@color/yellow"
+        android:backgroundTint="@color/yellow"
         android:layout_weight="1"
-        android:text="@string/difficulty" />
+        android:paddingStart="50dp"
+        android:paddingEnd="25dp"
+        android:layout_marginEnd="106dp"/>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/listScore"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/textPrimary"
+        android:textColor="@color/textRenk"
         android:layout_weight="1"
-        android:text="@string/score" />
+        android:text="@string/score"
+        android:layout_marginStart="-25dp"
+        android:textSize="16sp"/>
 </LinearLayout>
 

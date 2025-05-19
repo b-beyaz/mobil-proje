@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Arka Planlar -->
-    <color name="background">#2B1B17</color>
+    <color name="background">#383838</color>
     <color name="surface">#3D2C29</color>
 
     <!-- Ana Renkler -->
@@ -13,6 +13,13 @@
     <color name="black">#000000</color>
     <color name="dark_gray">#423E3E</color>
 
+    <color name="textRenk">#FFFFFF</color>
+
+
     <color name="toolbarRenk">#577557</color>
     <color name="butonRenk">#3E51AB</color>
+
+    <color name="red">#C84040</color>
+    <color name="yellow">#CAB145</color>
+    <color name="green">#3AB43A</color>
 </resources>

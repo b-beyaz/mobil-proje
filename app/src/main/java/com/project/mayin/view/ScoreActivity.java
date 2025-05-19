@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.SearchView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +26,14 @@ import java.util.List;
 
 public class ScoreActivity extends AppCompatActivity{
 
+    private SearchView searchView;
+    private Score_RecycleViewAdapter adapter;
+    private String queryText;
+    private List<Score> scores;
+    private ScoreDao scoreDao;
+    private AppDatabase db;
+    private RecyclerView recyclerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,18 +43,32 @@ public class ScoreActivity extends AppCompatActivity{
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
-        });
 
+        });
+        searchView = findViewById(R.id.srcFilter); // layout'unuza SearchView eklemelisiniz
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                queryText = newText;
+                filterScores();
+                return false;
+            }
+        });
         ImageButton homeButtonPage = findViewById(R.id.homeButtonDon);
 
         //Veritabanından verileri çekme işlemi
-        AppDatabase db = AppDatabase.getDatabase(this);
-        ScoreDao scoreDao = db.scoreDao();
-        List<Score> scores = scoreDao.getAll();
+        db = AppDatabase.getDatabase(this);
+        scoreDao = db.scoreDao();
+        scores = scoreDao.getAll();
         Collections.reverse(scores);
 
         //Verileri RecyclerView'a bağlama işlemi
-        RecyclerView recyclerView = findViewById(R.id.mRecyclerView);
+        recyclerView = findViewById(R.id.mRecyclerView);
         Score_RecycleViewAdapter adapter = new Score_RecycleViewAdapter(this, scores);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -57,6 +80,21 @@ public class ScoreActivity extends AppCompatActivity{
             }
         });
     }
+    private void filterScores() {
+        if (queryText.isEmpty()) {
+            Score_RecycleViewAdapter adapter = new Score_RecycleViewAdapter(this, scores);
+            recyclerView.setAdapter(adapter);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        }else{
+            List<Score> filteredScores = scoreDao.findByName(queryText);
+            Score_RecycleViewAdapter adapter = new Score_RecycleViewAdapter(this, filteredScores);
+            recyclerView.setAdapter(adapter);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        }
+
+
+    }
+
     private void backToHomePage() {
         Intent intent = new Intent(ScoreActivity.this, MainActivity.class);
         startActivity(intent);

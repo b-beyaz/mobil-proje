@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.project.mayin.R;
 import com.project.mayin.model.Score;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Score_RecycleViewAdapter extends RecyclerView.Adapter<Score_RecycleViewAdapter.ViewHolder> {
@@ -68,4 +69,5 @@ public class Score_RecycleViewAdapter extends RecyclerView.Adapter<Score_Recycle
     public int getItemCount() {
         return scores.size();
     }
+
 }

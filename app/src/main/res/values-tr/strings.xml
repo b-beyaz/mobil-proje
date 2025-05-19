@@ -63,5 +63,7 @@
     <string name="medium_star">⭐⭐</string>
     <string name="basic_star">⭐</string>
     <string name="result_image">Sonuç Resimi</string>
+    <string name="search_hint">Oyuncu ismini giriniz</string>
+
 </resources>
 

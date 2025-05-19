@@ -27,6 +27,9 @@ public interface ScoreDao {
     @Query("SELECT * FROM score WHERE difficulty = 3 ORDER BY score DESC LIMIT 1")
     Score getHighestScoreForHard();
 
+    @Query("SELECT * FROM score WHERE player_name LIKE :playerName")
+    List<Score> findByName(String playerName);
+
     @Insert
     void insertAll(Score... scores);
     @Delete

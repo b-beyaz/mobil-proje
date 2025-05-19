@@ -63,5 +63,7 @@
     <string name="medium_star">⭐⭐</string>
     <string name="basic_star">⭐</string>
     <string name="result_image">Result Image</string>
+
+    <string name="search_hint">Enter the player name</string>
 </resources>
 

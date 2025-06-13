@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#0FF0FF0F</color>
-    <color name="blue">#FF0000FF</color>
+    <!-- Arka Planlar -->
+    <color name="background">#FFFFFF</color>
+    <color name="surface">#3D2C29</color>
 
+    <!-- Ana Renkler -->
+    <color name="primary">#FF7043</color>
+    <color name="onPrimary">#1A0E0A</color>
+
+    <color name="textPrimary">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="dark_gray">#423E3E</color>
+
+    <color name="textRenk">#000000</color>
+
+
+
+    <color name="toolbarRenk">#BACDD9</color>
+    <color name="butonRenk">#738C5A</color>
+
+    <color name="red">#FF5050</color>
+    <color name="yellow">#E6C76C</color>
+    <color name="green">#51D151</color>
 </resources>

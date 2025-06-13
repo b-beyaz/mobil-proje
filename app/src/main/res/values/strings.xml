@@ -1,3 +1,69 @@
 <resources>
-    <string name="app_name">Mayin</string>
+    <string name="app_name">Mayın Tarlası</string>
+    <string name="loading">Loading ...</string>
+    <string name="enter_player_name">Enter Your Player Name</string>
+    <string name="easy_mode">Easy: 0 - No players</string>
+    <string name="medium_mode">Medium: 0 - No players</string>
+    <string name="hard_mode">Hard: 0 - No players</string>
+    <string name="easy_button">Easy</string>
+    <string name="medium_button">Medium</string>
+    <string name="hard_button">Hard</string>
+    <string name="setting_bottom_navigation">Settings</string>
+    <string name="score_bottom_navigation">Game History</string>
+    <string name="howtoplay_bottom_navigation">How To Play</string>
+
+
+    <string name="setting_title">Settings</string>
+    <string name="choose_theme">Night Theme</string>
+    <string name="choose_language">Choose Language</string>
+    <string name="turkish_button">Turkish</string>
+    <string name="english_button">English</string>
+
+    <string name="player_name">Player Name</string>
+    <string name="difficulty">Difficulty</string>
+    <string name="score">Score</string>
+
+    <string name="howto_play_title">How To Play?</string>
+    <string name="howto_play_text">To achieve victory in Minesweeper, you need to reveal all the safe squares while avoiding contact with any mines! At the start of the game, you"ll face a field filled with closed squares, none of which provide any initial information. Hidden among these squares are treacherous mines. A single tap on a square is all it takes to open it. If you're lucky, you'll uncover an empty space. But be cautious! If you happen to touch a mine, the game will end instantly. The numbers that appear in the empty squares you reveal offer crucial clues. These numbers indicate the total count of mines immediately adjacent to that square (including horizontal, vertical, and diagonal neighbors). By carefully examining these numbers, you can deduce which of the surrounding closed squares might contain mines. For instance, if you see a "1" on an opened square, it means that only one of the eight neighboring squares contains a mine. Strategic thinking and logical deduction are the keys to success in this game. By using the information you gain from the opened numbers, you must determine the likely locations of the mines and continue to open the squares you believe are safe. Your objective is to reveal all the safe squares on the screen without detonating a single mine. When you accomplish this, you'll prove yourself to be a master of Minesweeper! Remember, be careful with every move you make, and let the numbers guide your way!</string>
+
+    <string name="player_name_game">Player Name : </string>
+    <string name="current_score">Current Score :</string>
+    <string name="high_score">High Score: 0 - No players</string>
+
+    <string name="home_page">Home Page</string>
+
+    <string name="highest_score_format">Highest Score: %1$d - %2$s</string>
+    <string name="no_high_score">Highest Score: 0 - No Players</string>
+    <string name="player_name_format">Player: %1$s</string>
+    <string name="score_format">Score: %1$d</string>
+
+    <string name="dialog_title_game_over">Game Over!</string>
+    <string name="dialog_message_game_over">Game Over! Would you like to restart the game?</string>
+    <string name="dialog_title_game_won">You Won!</string>
+    <string name="dialog_message_game_won">Congratulations! Do you want to play again?</string>
+    <string name="toast_click_yes_or_no">Please click yes or no</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="toast_game_over">You lost the game! Please click yes or no! </string>
+    <string name="toast_game_won">You won the game! Please click yes or no!</string>
+
+    <string name="error_name_too_short">This field must be at least 3 characters long!</string>
+    <string name="error_name_too_long">This field must be no more than 20 characters!</string>
+    <string name="error_invalid_characters">Special characters and numbers are not allowed!</string>
+
+    <string name="easy_score_format">Easy: %1$d - %2$s</string>
+    <string name="easy_no_score">Easy: 0 - No players</string>
+
+    <string name="medium_score_format">Medium: %1$d - %2$s</string>
+    <string name="medium_no_score">Medium: 0 - No players</string>
+
+    <string name="hard_score_format">Hard: %1$d - %2$s</string>
+    <string name="hard_no_score">Hard: 0 - No players</string>
+    <string name="hard_star">⭐⭐⭐</string>
+    <string name="medium_star">⭐⭐</string>
+    <string name="basic_star">⭐</string>
+    <string name="result_image">Result Image</string>
+
+    <string name="search_hint">Enter the player name</string>
 </resources>
+

@@ -1,0 +1,69 @@
+<resources>
+    <string name="app_name">Mayın Tarlası</string>
+    <string name="loading">Yükleniyor ...</string>
+    <string name="enter_player_name">Kullanıcı Adını Giriniz</string>
+    <string name="easy_mode">Kolay: 0 - Oyuncu Yok</string>
+    <string name="medium_mode">Orta: 0 - Oyuncu Yok</string>
+    <string name="hard_mode">Zor: 0 - Oyuncu Yok</string>
+    <string name="easy_button">Kolay</string>
+    <string name="medium_button">Orta</string>
+    <string name="hard_button">Zor</string>
+    <string name="setting_bottom_navigation">Ayarlar</string>
+    <string name="score_bottom_navigation">Oyun Geçmişi</string>
+    <string name="howtoplay_bottom_navigation">Nasıl Oynanır</string>
+
+
+    <string name="setting_title">Ayarlar</string>
+    <string name="choose_theme">Gece Modu</string>
+    <string name="choose_language">Dil Tercihi Yapınız</string>
+    <string name="turkish_button">Türkçe</string>
+    <string name="english_button">İngilizce</string>
+
+    <string name="player_name">Oyundu Adı</string>
+    <string name="difficulty">Zorluk</string>
+    <string name="score">Skor</string>
+
+    <string name="howto_play_title">Nasıl Oynanır?</string>
+    <string name="howto_play_text">Mayın Tarlası"nda zafere ulaşmak için mayınlara dokunmaktan kaçınarak tüm güvenli kareleri ortaya çıkarmanız gerekiyor! Oyunun başlangıcında, üzerinde hiçbir bilgi bulunmayan kapalı karelerle dolu bir alanla karşılaşırsınız. Bu karelerin arasında sinsice gizlenmiş mayınlar bulunmaktadır. Bir kareyi açmak için üzerine tek bir dokunuş yeterli olacaktır. Şanslıysanız, altından boş bir alan çıkacaktır. Ancak dikkatli olun! Eğer bir mayına dokunursanız, oyun anında sona erer. Açtığınız boş karelerde beliren sayılar, size hayati ipuçları sunar. Bu sayılar, o karenin hemen yanındaki (yatay, dikey ve çapraz komşuları dahil) toplam mayın sayısını ifade eder. Bu sayıları dikkatlice inceleyerek, etrafındaki hangi kapalı karelerde mayın olabileceğine dair çıkarımlar yapabilirsiniz. Örneğin, "1" sayısı gördüğünüz bir karenin etrafındaki sekiz komşu kareden yalnızca birinde mayın olduğunu gösterir. Stratejik düşünme ve mantık yürütme bu oyunda başarının anahtarıdır. Açtığınız sayılardan elde ettiğiniz bilgileri kullanarak, mayınların olası konumlarını belirlemeli ve güvenli olduğunu düşündüğünüz kareleri açmaya devam etmelisiniz. Amacınız, tek bir mayına bile basmadan ekrandaki tüm güvenli kareleri açığa çıkarmaktır. Bunu başardığınızda, Mayın Tarlası'nın ustası olduğunuzu kanıtlarsınız! Unutmayın, her adımınızda dikkatli olun ve sayılar size yol göstersin!</string>
+
+    <string name="player_name_game">Oyuncu Adı : </string>
+    <string name="current_score">Mevcut Skor :</string>
+    <string name="high_score">En Yüksek Skor: 0 - Oyuncu Yok</string>
+
+    <string name="home_page">Ana Sayfa</string>
+
+    <string name="highest_score_format">En Yüksek Skor: %1$d - %2$s</string>
+    <string name="no_high_score">En Yüksek Skor: 0 - Oyuncu Yok</string>
+    <string name="player_name_format">Oyuncu: %1$s</string>
+    <string name="score_format">Skor: %1$d</string>
+
+    <string name="dialog_title_game_over">Oyunu Kaybettiniz!</string>
+    <string name="dialog_message_game_over">Oyunu kaybettiniz! Tekrar oynamak ister misiniz?</string>
+    <string name="dialog_title_game_won">Oyunu Kazandınız!</string>
+    <string name="dialog_message_game_won">Tebrikler! Tekrar oynamak ister misiniz?</string>
+    <string name="toast_game_over">Oyunu kaybettiniz! Lütfen evet veya hayıra tıklayınız!</string>
+    <string name="toast_game_won">Oyunu kazandınız! Lütfen evet veya hayıra tıklayınız!</string>
+    <string name="yes">Evet</string>
+    <string name="no">Hayır</string>
+    <string name="toast_click_yes_or_no">Lütfen evet ya da hayıra tıklayınız</string>
+
+    <string name="error_name_too_short">Bu alan en az 3 karakterden oluşmalıdır!</string>
+    <string name="error_name_too_long">Bu alan en fazla 20 karakterden oluşmalıdır!</string>
+    <string name="error_invalid_characters">Özel karakter ve rakam kullanılamaz!</string>
+
+    <string name="easy_score_format">Kolay: %1$d - %2$s</string>
+    <string name="easy_no_score">Kolay: 0 - Hiçbir oyuncu yok</string>
+
+    <string name="medium_score_format">Orta: %1$d - %2$s</string>
+    <string name="medium_no_score">Orta: 0 - Hiçbir oyuncu yok</string>
+
+    <string name="hard_score_format">Zor: %1$d - %2$s</string>
+    <string name="hard_no_score">Zor: 0 - Hiçbir oyuncu yok</string>
+    <string name="hard_star">⭐⭐⭐</string>
+    <string name="medium_star">⭐⭐</string>
+    <string name="basic_star">⭐</string>
+    <string name="result_image">Sonuç Resimi</string>
+    <string name="search_hint">Oyuncu ismini giriniz</string>
+
+</resources>
+

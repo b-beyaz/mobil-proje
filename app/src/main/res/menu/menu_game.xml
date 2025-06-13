@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/item_x1"
+        android:title="@string/setting_bottom_navigation"
+        android:icon="@drawable/settings_icon"
+        android:iconTint="@color/black"
+        />
+
+    <item
+        android:id="@+id/item_x2"
+        android:title="@string/score_bottom_navigation"
+        android:iconTint="@color/black"
+        android:icon="@drawable/skor"
+
+        />
+    <item
+        android:id="@+id/item_x3"
+        android:title="@string/howtoplay_bottom_navigation"
+        android:iconTint="@color/black"
+        android:icon="@drawable/howto_icon"
+
+        />
+</menu>
